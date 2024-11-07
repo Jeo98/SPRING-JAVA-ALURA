@@ -23,26 +23,9 @@ public class ScreenmatchApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("Hola mundo, jeo Spring");
-		Principal menu= new Principal();
-		menu.muestraMenu();
 
-		/*Scanner lectura = new Scanner(System.in);
-		var consumoAPI= new ConsumoAPI();
-		var json = consumoAPI.obtenerDatos("http://www.omdbapi.com/?t=game+of+thrones&apikey=8eb50e5");
-		System.out.println(json);//muestar tooda la info de la API
-
-		ConvierteDatos conversor = new ConvierteDatos();
-		var datos = conversor.obtenerDatos(json, DatosSerie.class);
-		/*entonces datos va a tener la conversion del json que trae toda la info de la API
-		y por medio del metodo de la interfaz que luego se aplica en la funcion obtenerDatos, los convierte
-		en un objeto de la clase DatosSerie, mostrando solamente la info que contienen esa clase RECORD!
-		*
-
-		NO OLVIDAR de ignorar las propiedades no mapeadas en el RECORD
-
-		@JsonIgnoreProperties(ignoreUnknown = true) --> para que ignore los campos que no mapeamos
-*/
-
+		Principal principalMenu = new Principal();
+		principalMenu.muestraMenu();
 
 	}
 }
