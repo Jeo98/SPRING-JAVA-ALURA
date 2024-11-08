@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true) // para que ignore los campos que no mapeamos
-public record DatosSerie(@JsonAlias("Title") String titulo,@JsonAlias("totalSeasons") int totalTemporadas, @JsonAlias("Season") int Temporada, @JsonAlias("Episode") int Episodio,@JsonAlias("imdbRating") String evaluacion) {
+public record DatosSerie(@JsonAlias("Title") String titulo,@JsonAlias("totalSeasons") Integer totalTemporadas, @JsonAlias("Season") int Temporada, @JsonAlias("Episode") int Episodio,@JsonAlias("imdbRating") String evaluacion) {
 
 }
 

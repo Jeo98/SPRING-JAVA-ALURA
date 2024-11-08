@@ -39,23 +39,31 @@ public class Principal {
         System.out.println("Ingresar nombre de la serie: ");
         String nombreSerie = lectura.nextLine();
         String json2=consumoAPI.obtenerDatos(API_URL+nombreSerie.replace(" ", "+")+"&Season="+ API_KEY);
-        ;
 
-        var datos= conversor.obtenerDatos(json2, DatosSerie.class);
-
+        DatosSerie datos= conversor.obtenerDatos(json2, DatosSerie.class);
+        System.out.println(datos);
         List<DatosTemporada> temporadas =new ArrayList<>();
-
-        for (int i=1; i<=datos.totalTemporadas(); i++) {
-
-            json2 = consumoAPI.obtenerDatos(API_URL+nombreSerie.replace(" ", "+")+"&Season="+i+ API_KEY);
-            var datosTemporada= conversor.obtenerDatos(json2,DatosTemporada.class);
+        for(int i=1; i<= datos.totalTemporadas();i++) {
+            json2 = consumoAPI.obtenerDatos(API_URL + nombreSerie.replace(" ", "+") + "&Season=" + i + API_KEY);
+            DatosTemporada datosTemporada = conversor.obtenerDatos(json2, DatosTemporada.class);
             //convierto el json a datostemporada y luego esa información la cargo dentro de la lista
             temporadas.add(datosTemporada);
-
-
-
         }
+       // temporadas.forEach(System.out::println);
+        //Implementar for multinivel
+        /*for(int i=0; i< datos.totalTemporadas();i++){
+            List<DatosEpisodio> episodiosTemporadas = temporadas.get(i).episodios();
+            for(int j=0; j<episodiosTemporadas.size();j++){
+                System.out.println(episodiosTemporadas.get(j).titulo());
+            }
+        }*/
+
+        //Implementar for multinivel utilizando lambdas
+
 
 
     }
+
+
+
 }
