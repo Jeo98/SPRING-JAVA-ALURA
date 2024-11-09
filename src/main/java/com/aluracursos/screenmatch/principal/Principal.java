@@ -58,7 +58,7 @@ public class Principal {
             }
         }*/
 
-        //Implementar for multinivel utilizando lambdas
+        //Implementar for multinivel utilizando funciones lambdas
 
         temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo()))); //esto es equivalente a for multinivel
 
