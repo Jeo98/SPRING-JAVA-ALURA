@@ -20,7 +20,7 @@ public class Principal {
 
     public void muestraMenu(){
         int salida=0;
-        while(salida==0) {
+        /*while(salida==0) {
         System.out.println("Ingresar nombre de la serie: ");
         String nombreSerie = lectura.nextLine();
 
@@ -34,7 +34,7 @@ public class Principal {
         System.out.print("0--> Continuar\n99--> SALIR\n-> ");
         salida = lectura.nextInt();
         lectura.nextLine();
-        } //fin while
+        } //fin while */
 
         System.out.println("Ingresar nombre de la serie: ");
         String nombreSerie = lectura.nextLine();
@@ -60,7 +60,7 @@ public class Principal {
 
         //Implementar for multinivel utilizando lambdas
 
-
+        temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo()))); //esto es equivalente a for multinivel
 
     }
 
