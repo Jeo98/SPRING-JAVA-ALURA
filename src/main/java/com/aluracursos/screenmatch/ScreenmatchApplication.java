@@ -2,6 +2,7 @@ package com.aluracursos.screenmatch;
 
 import com.aluracursos.screenmatch.model.DatosEpisodio;
 import com.aluracursos.screenmatch.model.DatosSerie;
+import com.aluracursos.screenmatch.principal.EjemplosStreams;
 import com.aluracursos.screenmatch.principal.Principal;
 import com.aluracursos.screenmatch.service.ConsumoAPI;
 import com.aluracursos.screenmatch.service.ConvierteDatos;
@@ -26,6 +27,9 @@ public class ScreenmatchApplication implements CommandLineRunner{
 
 		Principal principalMenu = new Principal();
 		principalMenu.muestraMenu();
+
+		/*EjemplosStreams ej = new EjemplosStreams();
+		ej.muestraEjemplo();*/
 
 	}
 }
