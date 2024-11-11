@@ -7,6 +7,8 @@ import com.aluracursos.screenmatch.model.Episodio;
 import com.aluracursos.screenmatch.service.ConsumoAPI;
 import com.aluracursos.screenmatch.service.ConvierteDatos;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -97,6 +99,22 @@ public class Principal {
                 .collect(Collectors.toList());
 
         episodios.forEach(System.out::println);
+
+        //Busqueda de episodios por año ingresado por usuario
+
+        System.out.println("Ingresar año a buscar: ");
+        var fecha = lectura.nextInt();
+        lectura.nextLine();
+        LocalDate fechaBusqueda = LocalDate.of(fecha,1,1); //AÑO / MES / DIA, luego se modifica con formato
+        DateTimeFormatter formatoFecha =  DateTimeFormatter.ofPattern("dd/MM"); // modifico el formato de DateTime
+        episodios.stream()
+                .filter(e -> e.getFechaLanzamiento() != null/*para que no tome los null*/&& e.getFechaLanzamiento().isAfter(fechaBusqueda)) //filtro todos los datos que estan despues de la fecha
+    /*isAfter es de la biblio de LocalDate*/
+                .forEach(e-> System.out.println("Temporada: " + e.getTemporada() +
+                        " Episodio: "+e.getTitulo() +
+                        " Fecha lanzamiento: " + e.getFechaLanzamiento().format(formatoFecha)));
+                        /*Printeo cada la temporada, episodio y fecha de lanzamiento de cada elemento de la lista episodios*/
+
 
     }
 
