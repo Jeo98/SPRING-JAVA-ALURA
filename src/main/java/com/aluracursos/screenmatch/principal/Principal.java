@@ -9,10 +9,7 @@ import com.aluracursos.screenmatch.service.ConvierteDatos;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Principal {
@@ -75,7 +72,7 @@ public class Principal {
                         //podria utilizar directamente toList, el problema es que genera la lista inmutable, es decir,
                         // que despues no se puede agregar ningun dato
 
-
+/*
         //hacer un top 5 episodios
         System.out.println("Top 5 mejores episodios");
         datosEpisodios.stream()
@@ -83,7 +80,7 @@ public class Principal {
                 .sorted(Comparator.comparing(DatosEpisodio::evaluacion).reversed())
                 .limit(5)
 
-                .forEach(System.out::println);
+                .forEach(System.out::println); */
 
 
         //sorted, ordena de menor a mayor,
@@ -114,7 +111,7 @@ public class Principal {
                         " Episodio: "+e.getTitulo() +
                         " Fecha lanzamiento: " + e.getFechaLanzamiento().format(formatoFecha)));
                         /*Printeo cada la temporada, episodio y fecha de lanzamiento de cada elemento de la lista episodios*/
-
+/*
         System.out.println("Ingresar el puntaje de episodios a filtrar y mostrar: ");
         String input =  lectura.nextLine();
 
@@ -124,6 +121,26 @@ public class Principal {
                          .peek(e -> System.out.println("peek 1: filtro"))
                 .limit(6)
                 .forEach(System.out::println);
+                 */
+        //busqueda de episodio por nombre de titulo
+
+        System.out.println("Ingresar nombre de episodio a buscar: ");
+        var nombreEpisodio= lectura.nextLine();
+        //Optional guarda un solo valor o null, El principal uso de Optional es proporcionar un tipo de
+        // retorno alternativo cuando un metodo puede no devolver un valor.
+
+        Optional<Episodio> episodioBuscado= episodios.stream()
+                .filter(e -> e.getTitulo().toUpperCase().contains(nombreEpisodio.toUpperCase()))
+                .findFirst();
+        //si encuentra, al Optional episodioBuscado se le asigna el valor de la lista que tiene
+        //el valor del episodio buscado por titulo
+        if(episodioBuscado.isPresent()) {
+            //si episodioBuscado existe o está presente, es decir, si se encontró...
+            System.out.println("Episodio encontrado!");
+            System.out.println(episodioBuscado.get()); // trae todos los datos del episodio encontrado
+        }
+        else//si no se encontró..
+            System.out.println("Episodio no encontrado...");
     }
 
 }
