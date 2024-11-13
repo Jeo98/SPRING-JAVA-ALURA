@@ -115,9 +115,15 @@ public class Principal {
                         " Fecha lanzamiento: " + e.getFechaLanzamiento().format(formatoFecha)));
                         /*Printeo cada la temporada, episodio y fecha de lanzamiento de cada elemento de la lista episodios*/
 
+        System.out.println("Ingresar el puntaje de episodios a filtrar y mostrar: ");
+        String input =  lectura.nextLine();
 
+        double puntaje = Double.parseDouble(input.replace(",",".")); // Para evitar error por region si se usa . o ,
+                 episodios.stream()
+                .filter(e -> e.getEvaluacion().equals(puntaje))
+                         .peek(e -> System.out.println("peek 1: filtro"))
+                .limit(6)
+                .forEach(System.out::println);
     }
-
-
 
 }
