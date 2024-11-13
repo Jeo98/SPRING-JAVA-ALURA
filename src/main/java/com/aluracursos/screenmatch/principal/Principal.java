@@ -147,7 +147,7 @@ public class Principal {
                 .filter(e -> e.getEvaluacion() >0.0)
                 .collect(Collectors.groupingBy(Episodio::getTemporada,
                         Collectors.averagingDouble(Episodio::getEvaluacion)));
-        System.out.println("Puntaje de cada temporada: " + evaluacionPorTemporada);
+        System.out.println("Puntaje por temporada: " + evaluacionPorTemporada);
 
 
 
