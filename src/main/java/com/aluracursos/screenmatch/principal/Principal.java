@@ -123,7 +123,7 @@ public class Principal {
                 .forEach(System.out::println);
                  */
         //busqueda de episodio por nombre de titulo
-
+        /*
         System.out.println("Ingresar nombre de episodio a buscar: ");
         var nombreEpisodio= lectura.nextLine();
         //Optional guarda un solo valor o null, El principal uso de Optional es proporcionar un tipo de
@@ -140,7 +140,19 @@ public class Principal {
             System.out.println(episodioBuscado.get()); // trae todos los datos del episodio encontrado
         }
         else//si no se encontró..
-            System.out.println("Episodio no encontrado...");
+            System.out.println("Episodio no encontrado...");*/
+
+        // ---> Evaluacion por temporada con Map
+        Map<Integer,Double> evaluacionPorTemporada = episodios.stream()
+                .filter(e -> e.getEvaluacion() >0.0)
+                .collect(Collectors.groupingBy(Episodio::getTemporada,
+                        Collectors.averagingDouble(Episodio::getEvaluacion)));
+        System.out.println("Puntaje de cada temporada: " + evaluacionPorTemporada);
+
+
+
+
     }
+
 
 }
