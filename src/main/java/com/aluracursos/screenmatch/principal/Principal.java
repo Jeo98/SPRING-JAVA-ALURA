@@ -149,6 +149,14 @@ public class Principal {
                         Collectors.averagingDouble(Episodio::getEvaluacion)));
         System.out.println("Puntaje por temporada: " + evaluacionPorTemporada);
 
+        //DoubleSummaryStatistics, nos permite generar algunas estadisticas con al informacion de la API
+
+        DoubleSummaryStatistics estadisticas = episodios.stream()
+                .filter(e -> e.getEvaluacion() > 0.0)
+                .collect(Collectors.summarizingDouble(Episodio::getEvaluacion));
+        System.out.println("Media de evaluaciones: " + estadisticas.getAverage());
+        System.out.println("Episodio mejor valuado: " + estadisticas.getMax());
+        System.out.println("Episodio peor valuado: " + estadisticas.getMin());
 
 
 
